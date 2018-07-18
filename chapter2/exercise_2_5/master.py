@@ -29,7 +29,7 @@ STD = 0.01
 K = 10
 
 # initial Qtrue
-Qinit = 10
+Qinit = 1
 
 Qtrue = np.zeros(K, float)
 
@@ -37,14 +37,14 @@ Qtrue = np.zeros(K, float)
 def initQtrue(K):
     global Qtrue
     Qtrue = np.zeros(K, float)
-    for i in range(1, K):
-        Qtrue[i-1] = Qinit
+    for i in range(0, K):
+        Qtrue[i] = Qinit
 
 # random walk after each step
 def updateQtrue(K):
     global Qtrue
-    for i in range(1, K):
-        Qtrue[i - 1] += random.gauss(MEAN, STD)
+    for i in range(0, K):
+        Qtrue[i] += random.gauss(MEAN, STD)
 
 # get the best action
 def bestaction():
@@ -52,7 +52,7 @@ def bestaction():
 
 # take action A. return whether it is a best action and the reward
 def bandit(A):
-    return A == bestaction(), Qtrue[A-1] + np.random.randn()
+    return A == bestaction(), Qtrue[A] + np.random.randn()
 
 
 Q = np.zeros(K, float)
@@ -66,8 +66,8 @@ for b in range(1, EPISODENUM):
     for a in range(1, MAXSTEP):
         epsilon = random.random()
         if epsilon < EPSILON:
-            A = random.randint(0, K - 1)
-            AF = random.randint(0, K - 1)
+            A = random.randint(0, K-1)
+            AF = random.randint(0, K-1)
         else:
             A = np.argmax(Q)
             AF = np.argmax(QF)
