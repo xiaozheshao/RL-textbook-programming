@@ -84,7 +84,7 @@ for b in range(1, EPISODENUM):
 
         N[A] = N[A] + 1
         Q[A] = Q[A] + 1 / N[A] * (R - Q[A])
-        QF[A] = QF[A] + ALPHA * (R - QF[A])
+        QF[AF] = QF[AF] + ALPHA * (RF - QF[AF])
 
         updateQtrue(K)
 
