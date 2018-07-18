@@ -9,7 +9,7 @@ EPSILON = 0.1
 # number of steps in each episode
 MAXSTEP = 10000
 # try how many times
-EPISODENUM = 1000
+EPISODENUM = 100
 
 #average reward for sample average
 AR = np.zeros(MAXSTEP, float)
@@ -63,6 +63,10 @@ print(Q)
 for b in range(1, EPISODENUM):
     print(b)
     initQtrue(K)
+
+    Q = np.zeros(K, float)
+    QF = np.zeros(K, float)
+
     for a in range(1, MAXSTEP):
         epsilon = random.random()
         if epsilon < EPSILON:
