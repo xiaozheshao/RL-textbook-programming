@@ -78,9 +78,9 @@ class Agent(object):
         #additional conditions
         if action > 0:
             r += 2
-        if aa > PARKINGSIZE:
+        if a > PARKINGSIZE:
             r -= 4
-        if bb > PARKINGSIZE:
+        if b > PARKINGSIZE:
             r -= 4
 
         p = 0
