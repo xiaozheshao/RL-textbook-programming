@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 THETA = 0.0001
 
-WINPERCENT = 0.4
+WINPERCENT = 0.5
 GAMMA = 1
 
 class Agent(object):
@@ -49,7 +49,7 @@ class Agent(object):
     def getpolicy(self):
         for s in range(1, 99):
             actions = self.getactions(s)
-#            actions[0] = 0
+            actions[0] = 0
             self.PI[s] = np.argmax(actions)
         self.policyshow()
 
